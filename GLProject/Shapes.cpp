@@ -7,6 +7,7 @@
 
 
 class Shapes {
+public:
 	static std::vector<glm::vec3> makeCircle(int numberOfPoints,float r) {
 		std::vector<glm::vec3> circle = {};
 		int step = 360 / numberOfPoints;

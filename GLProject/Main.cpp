@@ -59,6 +59,7 @@ int main()
 	GLFWwindow* window = glfwCreateWindow(width, height, "Lecture 3", NULL, NULL);
 	glfwMakeContextCurrent(window);
 	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	glfwSwapInterval(1);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -146,6 +147,7 @@ int main()
 	//vertices5.push_back(vec3(0.0f, 0.366f, 1.0f));
 	//vertices5.push_back(vec3(0.0f, 0.366f, 0.0f));
 	//Polygon Polygon5 = Polygon(vertices5, vec3(1.0f, 1.0f, 0.0f));
+	MyPoly circle = MyPoly(Shapes::makeCircle(30, 1), 0.5);
 
 	ourShader.use();
 	
@@ -253,11 +255,10 @@ int main()
 		//m.transformation(t);
 		//m.Zscale(0.5);
 		//m.draw(ourShader);
-		
-
+		circle.draw(ourShader);
 
 		//
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(window); 
 		glfwPollEvents();
 	}
 
