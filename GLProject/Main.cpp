@@ -12,6 +12,8 @@
 #include "MyPoly.cpp"
 //#include "Polygon.cpp"
 #include <math.h>
+#include "Shapes.cpp"
+
 
 using namespace glm;
 
@@ -213,15 +215,15 @@ int main()
 		Polygon1.transformation(transformation);
 		Polygon1.draw(ourShader);
 
-		float speed = 0.5f;
+		float speed = 2.0f;
 		transformation = mat4(1.0f);
-		transformation = rotate(transformation, cos((float)glfwGetTime())/2, vec3(0.0f, 0.0f, 1.0f*speed));
+		transformation = rotate(transformation, cos((float)glfwGetTime()*speed)/2, vec3(0.0f, 0.0f, 1.0f*speed));
 		transformation = translate(transformation, vec3(0.0f, -0.5f, 0.0f));
 		Polygon2.transformation(transformation);
 		Polygon2.draw(ourShader);
 
 		transformation = mat4(1.0f);
-		transformation = rotate(transformation, cos((float)glfwGetTime())/2, vec3(0.0f, 0.0f, 1.0f*speed));
+		transformation = rotate(transformation, cos((float)glfwGetTime()*speed)/2, vec3(0.0f, 0.0f, 1.0f*speed));
 		transformation = translate(transformation, vec3(0.0f, -0.5f - 0.1f * 2.0f, 0.1f));
 		transformation = scale(transformation, vec3(0.12,0.12,1.0));
 		Polygon3.transformation(transformation);

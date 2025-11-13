@@ -133,6 +133,7 @@
     <ClCompile Include="Polygon3d.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenGL.SharedModule\OpenGL.SharedModule.vcxproj">
