@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GLProject/texture.vs
+/OpenGL.SharedModule/src/abstraction/Sample.ixx

@@ -38,7 +38,7 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += normalize(cross(cameraFront, cameraUp)) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-		cameraPos += cross(cameraFront,normalize(cross(cameraFront, cameraUp))) * cameraSpeed;
+		cameraPos += cross(cameraFront, normalize(cross(cameraFront, cameraUp))) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		cameraPos -= cross(cameraFront, normalize(cross(cameraFront, cameraUp))) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
@@ -196,68 +196,6 @@ int main()
 		Arrow2.transformation(transformation);
 		Arrow22.transformation(transformation);
 
-		Arrow2.draw(ourShader);
-		Arrow22.draw(ourShader);
-		////////////////////////////////////////////////////////////////////////
-		transformation = mat4(1.0f);
-		float timeInHours = glfwGetTime() / 3600;
-		rotationSpeed = glm::radians(30.0f);
-		float HourAngle = rotationSpeed * timeInHours;
-		transformation = rotate(transformation, HourAngle, vec3(0.0f, 0.0f, -1.0f));
-		transformation = rotate(transformation, (float)3.14 / 4, vec3(0.0f, 0.0f, -1.0f));
-
-		Arrow3.transformation(transformation);
-		Arrow33.transformation(transformation);
-
-		Arrow3.draw(ourShader);
-		Arrow33.draw(ourShader);
-		/////////////////////////////////////////////////////
-		transformation = mat4(1.0f);
-		transformation = translate(transformation, vec3(0.0f, 0.1f, 0.0f));
-		transformation = scale(transformation, vec3(0.8f, 0.8f, 1.0f));
-		Polygon1.transformation(transformation);
-		Polygon1.draw(ourShader);
-
-
-
-		 rotationSpeed = glm::radians(90.0f);
-
-		//float speed = 0.5f/42.0f;
-		transformation = mat4(1.0f);
-		transformation = rotate(transformation, cos((float)glfwGetTime() * rotationSpeed) / 2, vec3(0.0f, 0.0f, 1.0f));
-		transformation = translate(transformation, vec3(0.0f, -0.5f, 0.0f));
-		Polygon2.transformation(transformation);
-		Polygon2.draw(ourShader);
-
-		transformation = mat4(1.0f);
-		transformation = rotate(transformation, cos((float)glfwGetTime()*rotationSpeed)/2, vec3(0.0f, 0.0f, 1.0f));
-		transformation = translate(transformation, vec3(0.0f, -0.5f - 0.1f * 2.0f, 0.1f));
-		transformation = scale(transformation, vec3(0.12,0.12,1.0));
-		Polygon3.transformation(transformation);
-		Polygon3.draw(ourShader);
-		
-		
-		////Polygon4.transformation(transformation);
-		//Polygon4.draw(ourShader);
-
-		////Polygon5.transformation(transformation);
-		//Polygon5.draw(ourShader);
-
-		//Test::
-		std::vector<vec3> ve = {};
-		ve.push_back(vec3(0.5f, -0.5f, 0.0f));//down right
-		ve.push_back(vec3(-0.5f, -0.5f, 0.0f));//down left
-		ve.push_back(vec3(-0.5f, 0.5f, 0.0f));//top left
-		ve.push_back(vec3(0.5f, 0.5f, 0.0f));//top right
-		//MyPoly m = MyPoly(ve,0.5f);
-		//glm::mat4 t = mat4(1.0f);
-		//t = glm::rotate(t,30.0f,vec3(0.0f,1.0f,0.0f));
-		//m.transformation(t);
-		//m.Zscale(0.5);
-		//m.draw(ourShader);
-		circle.draw(ourShader);
-
-		//
 		glfwSwapBuffers(window); 
 		glfwPollEvents();
 	}
