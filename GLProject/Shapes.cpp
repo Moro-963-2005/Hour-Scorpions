@@ -15,6 +15,15 @@ public:
 				glm::vec2(1.0f, 1.0f),
 		};
 	}
+	static std::vector<glm::vec2> invSquareTexture()
+	{
+		return {
+				glm::vec2(0.0f, 1.0f),
+				glm::vec2(0.0f, 0.0f),
+				glm::vec2(-1.0f, 0.0f),
+				glm::vec2(-1.0f, 1.0f)
+		};
+	}
 	static std::vector<glm::vec2> makeCircleTextureUV(int numberOfPoints)
 	{
 		std::vector<glm::vec2> circleUV = {};

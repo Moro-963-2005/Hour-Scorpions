@@ -17,7 +17,6 @@
 #include "PolygonTex.cpp"
 #include "Helper.cpp"
 
-
 using namespace glm;
 
 int width = 800;
@@ -97,10 +96,14 @@ int main()
 
 	//INIT
 	//NOTE THIS TEXTURE IS A HIGH COMPRESSED WHICH TAKES A WHILE TO LOAD
-	const char* boxImage = "./wood.png";// "./container.jpg" "./wood2.png"
-	const char* clockImage = "./clock-alpha.png";// "./container.jpg" "./wood2.png"
+	const char* boxImage = "./resources/wood_resized.jpg";// "./container.jpg" "./wood2.png"
+	//const char* clockImage = "./clock-alpha.png";// "./container.jpg" "./wood2.png"
+	const char* clockImage = "./resources/clock-alpha.png";// "./container.jpg" "./wood2.png"
+
 
 	MyPoly box = MyPoly(Shapes::makeRect(1.0f, 1.0f), 0.5f, TEXTURE, Shapes::squareTexture(), {boxImage});
+	MyPoly box2 = MyPoly(Shapes::makeRect(1.0f, 0.1f), 0.4f, TEXTURE, Shapes::squareTexture(), { boxImage });
+
 	MyPoly UpperClockShape = MyPoly(Shapes::makeCircle(30, 0.5f), 0.55);
 	PolygonTex clock = PolygonTex(Shapes::makeCircle(30,0.35), clockImage, Shapes::makeCircleTextureUV(30));
 	//PolygonTex clock = PolygonTex(Shapes::makeRect(0.7, 0.7), "./clock-alpha.png", Shapes::squareTexture());
@@ -128,13 +131,13 @@ int main()
 	vec3 blackColor = makeColorRGB(0, 0, 0);
 	vec3 greyColor = makeColorRGB(20, 20, 20);
 	vec3 lightGreyColor = makeColorRGB(200, 200, 200);
-
+	vec3 midGreyColor = makeColorRGB(150, 150, 150);
 	vec3 brownColor = makeColorRGB(137, 72, 30);
 	vec3 whiteColor = makeColorRGB(255, 255, 255);
 
 	//setColors:
 	pendulumBody.setColor(metalColor);
-	pendulumHead.setColor(goldColor);
+	pendulumHead.setColor(midGreyColor);
 	UpperClockShape.setColor(greyColor);
 	secArrowBody.setColor(blackColor);
 	secArrowHead.setColor(blackColor);
@@ -147,7 +150,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		mat4 view = mat4(1.0f);
 		//view = translate(view, vec3(0.0f, 0.0f, -4.0f));
@@ -159,8 +162,17 @@ int main()
 		texShader.setMat4("view", view);
 		box.resetTransformation();
 		box.scale(vec3(0.6f,1.0f,0.5f));
-		box.translate(vec3(0.0f, -0.75f, 0.0f));
+		box.translate(vec3(0.0f, -0.75f+0.05f, 0.0f));
 		box.draw(texShader);
+		
+		box2.resetTransformation();
+		box2.scale(vec3(0.8f,1.0f,0.8f));
+		box2.translate(vec3(0.0f,-0.25f,-0.05f));
+		box2.draw(texShader);
+		box2.translate(vec3(0.0f, -1.00f, 0.00f));
+		box2.scale(vec3(1.2f, 1.0f, 1.2f));
+		box2.draw(texShader);
+
 		mat4 transform = mat4(1.0);
 		transform = translate(transform,vec3(0.0f,0.0f,0.337f));
 		clock.transformation(transform);
